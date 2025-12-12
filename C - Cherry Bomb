@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        long long k;
+        cin >> n >> k;
+        vector<long long> v(n), v2(n);
+        for (int i = 0; i < n; i++) cin >> v[i];
+        for (int i = 0; i < n; i++) cin >> v2[i];
+
+        long long sum = -1;
+        bool flag = true;
+
+        for (int i = 0; i < n; i++) {
+            if (v2[i] != -1) {
+                long long pair_sum = v[i] + v2[i];
+                if (sum == -1) sum = pair_sum;
+                else if (pair_sum != sum) {
+                    flag = false; 
+                    break;
+                }
+            }
+        }
+
+        if (sum != -1) {
+            if (flag) {
+                for (int i = 0; i < n; i++) {
+                    if (v2[i] == -1) {
+                        if ((sum - v[i]) < 0 || (sum - v[i]) > k) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                }
+            }
+            cout << (flag ? 1 : 0) << endl;
+        }
+        else {
+            long long mn = *min_element(v.begin(), v.end());
+            long long mx = *max_element(v.begin(), v.end());
+            cout << (mn + k - mx + 1) << endl;
+        }
+    }
+}
+z
