@@ -1,0 +1,51 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long 
+
+void WA(){
+	string s;
+	cin>>s;
+	int n=s.size();
+	s=" "+s;
+	int l=0,r=0;
+	for(int i=1;i<=n;i++){
+		if(s[i]=='<'){
+			l++;
+		}
+		else if(s[i]=='*'){
+			l++,r++;
+			if(i<n){
+				if(s[i+1]=='>'){
+					
+				}
+				else {
+					cout<<"-1\n";
+					return ;
+				}
+			}
+		}
+		else {
+			r++;
+			if(i<n){
+				if(s[i+1]=='>'){
+					
+				}
+				else {
+					cout<<"-1\n";
+					return ;
+				}
+			}
+		}
+	}
+	cout<<max(l,r)<<"\n";
+	return ;
+}
+signed main(){
+	ios::sync_with_stdio(false);cin.tie(0),cout.tie(0);
+	int T=1;
+	cin>>T;
+	while(T--){
+		WA();
+	}
+	return 0;
+}
