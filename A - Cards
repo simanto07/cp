@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    vector < pair < int, int >> v(n);
+    int sum = 0;
+
+
+    for (int i = 0; i < n; i++) {
+        cin >> v[i].first;
+        v[i].second = i + 1;
+        sum += v[i].first;
+    }
+
+    int target = sum / (n / 2);
+
+    sort(v.begin(), v.end());
+
+    int i = 0, j = n - 1;
+    while (i < j) {
+        if (v[i].first + v[j].first == target) {
+            cout << v[i].second << " " << v[j].second << "\n";
+            i++;
+            j--;
+        }
+    }
+
+    return 0;
+}
