@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+//Simanto ..... 1st
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+
+        vector < long long > a(n), b(n);
+        for (int i = 0; i < n; i++) cin >> a[i];
+        for (int i = 0; i < n; i++) cin >> b[i];
+
+        long long mx = 0, mn = 0;
+
+        for (int i = 0; i < n; i++) {
+            long long nMx = max(mx - a[i], b[i] - mn);
+            long long nMn = min(mn - a[i], b[i] - mx);
+            mx = nMx;
+            mn = nMn;
+        }
+
+        cout << mx << "\n";
+    }
+}
