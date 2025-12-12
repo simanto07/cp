@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        vector < long long > v(n + 1), ov;
+        bool f = false;
+        long long ans = 0;
+        for (int i = 1; i <= n; i++) {
+            cin >> v[i];
+            if (v[i] % 2 != 0) {
+                ov.push_back(v[i]);
+                f = true;
+            }
+            else ans += v[i];
+        }
+
+        sort(ov.rbegin(), ov.rend());
+        for (int i = 0; i < (ov.size() + 1) / 2; i++) {
+            ans += ov[i];
+        }
+        if (!f) cout << 0 << endl;
+        else cout << ans << endl;
+    }
+    return 0;
+}
