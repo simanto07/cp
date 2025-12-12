@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, k;
+        cin >> n >> k;
+
+        vector<long long> v(n);
+        for (int i = 0; i < n; i++) cin >> v[i];
+
+        if (n == k) {
+            cout << 1 << "\n";
+            continue;
+        }
+
+        map<long long, int> m;
+        for (long long x : v) m[x]++;
+
+        vector<int> cnt;
+        for (auto &pr : m) cnt.push_back(pr.second);
+
+        sort(cnt.begin(), cnt.end());
+
+        for (int i = 0; i < cnt.size(); i++) {
+            if (k >= cnt[i]) {
+                k -= cnt[i];
+                cnt[i] = 0;
+            } else {
+                cnt[i] -= k;
+                k = 0;
+            }
+            if (k == 0) break;
+        }
+
+        vector<int> temp;
+        for (int x : cnt) 
+            if (x > 0) temp.push_back(x);
+
+        cout << temp.size() << "\n";
+    }
+}
