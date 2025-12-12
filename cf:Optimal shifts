@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+//Simanto...
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        string s;
+        cin >> s;
+
+        string t = s + s;
+        int cr = 0, mZero = 0;
+
+        for (char c: t) {
+            if (c == '0') cr++;
+            else cr = 0;
+            mZero = max(mZero, cr);
+        }
+
+        mZero = min(mZero, n);
+        cout << mZero << "\n";
+    }
+}
