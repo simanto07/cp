@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        vector<int> a(n);
+        for (int &x : a) cin >> x;
+
+        set<int> s;
+        for (int x : a) if (x > 0) s.insert(x);
+
+        int k = s.size();
+        cout << (k == 0 ? 0 : 2 * k - 1) << '\n';
+    }
+}
