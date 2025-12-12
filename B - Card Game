@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    while(t--){
+        int a, b, c, d;
+        cin >> a >> b >> c >> d;
+
+        int ans = 0;
+
+        int win = 0;
+        if (a > c) win++;
+        if (a < c) win--;
+        if (b > d) win++;
+        if (b < d) win--;
+        if (win > 0) ans++;
+
+
+        win = 0;
+        if (a > d) win++;
+        if (a < d) win--;
+        if (b > c) win++;
+        if (b < c) win--;
+        if (win > 0) ans++;
+
+
+        win = 0;
+        if (b > c) win++;
+        if (b < c) win--;
+        if (a > d) win++;
+        if (a < d) win--;
+        if (win > 0) ans++;
+
+        
+        win = 0;
+        if (b > d) win++;
+        if (b < d) win--;
+        if (a > c) win++;
+        if (a < c) win--;
+        if (win > 0) ans++;
+
+        cout << ans << "\n";
+    }
+}
