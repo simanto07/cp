@@ -1,0 +1,14 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int t;cin>>t;
+	while(t--){
+        int p,q,r;cin>>p>>q>>r;
+        int sum=p+q+r;
+        if(sum%2!=0)cout<<-1<<endl;
+        else if(p+q<=r)cout<<p+q<<endl;
+        else cout<<sum/2<<endl;
+	}
+
+}
