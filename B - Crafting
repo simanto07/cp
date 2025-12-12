@@ -1,0 +1,71 @@
+#include<bits/stdc++.h>
+using namespace std ;
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t ;
+    cin>> t;
+    while ( t-- )
+    {
+        int n ;
+        cin>> n ;
+        vector < int > a(n), b(n);
+        for ( int i = 0 ; i < n ; i++ )
+        {
+            cin>>a[i];
+        }
+        for ( int i = 0 ; i < n ; i++ )
+        {
+            cin>>b[i];
+        }
+        bool ans = true ;
+        int cnt = 0, ind = -1 ;
+        for ( int i = 0 ; i < n ; i++ )
+        {
+            if ( a[i] < b[i])
+            {
+                cnt++;
+                ind = i;
+            }
+        }
+        if ( cnt > 1 )
+        {
+            cout << "NO" << '\n';
+        }
+        else
+        {
+            if ( cnt == 0 )
+            {
+                cout << "YES" << '\n';
+            }
+            else
+            {
+                bool ok = true ;
+                int need = b[ind] - a[ind];
+                for ( int i = 0 ; i < n ; i++ )
+                {
+                    if ( i != ind && a[i] - need < b[i])
+                    {
+                        ok = false ;
+                        break ;
+                    }
+                }
+                if (ok)
+                {
+                    cout << "YES" << '\n';
+                }
+                else
+                {
+                    cout << "NO" << '\n';
+                }
+            }
+
+        }
+    }
+
+
+    return 0 ;
+}
