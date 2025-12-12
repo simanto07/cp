@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long 
+ 
+ 
+
+void solve()
+{
+  ll a,b; cin>>a>>b;
+  
+  if(__lg(a) < __lg(b))
+  {
+    cout << -1 << endl;
+    return ;
+  }
+  
+  
+  cout << 2 << endl;
+  
+  
+  cout << (a^((2LL << __lg(a))-1)) << " ";
+  a = ((2LL << __lg(a)) - 1);
+  
+  cout << (a^b)<<endl;
+
+  
+}
+ 
+int main()
+{
+    int t; cin>>t;
+    
+    while(t--)
+    {
+       solve();
+    }
+    
+    return 0;
+    
+}
