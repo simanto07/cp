@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+
+        vector < int > v(2 * n + 1, 0); // 1-based indexing
+        v[n] = n;
+        v[2 * n] = n;
+        int f = n - 1;
+        bool sig = true;
+
+        for (int i = 1; i <= 2 * n; i++) {
+            if (v[i] == 0) {
+                v[i] = f;
+                if (f == 1) sig = false;
+                if (sig) f--;
+                else f++;
+            }
+        }
+        for (int i = n+1 ; i <= 2 * n; i++) {
+            if (v[i] == n) break;
+            v[i] -= 1;
+
+        }
+        if(n!=1)
+        v[2*n-1]-=1;
+        for (int i = 1; i <= 2 * n; i++) cout << v[i] << " ";
+        cout << "\n";
+    }
+}
