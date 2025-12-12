@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+
+        vector<long long> v(n);
+        for (int i = 0; i < n; i++) cin >> v[i];
+
+        int m;
+        cin >> m;
+
+        while (m--) {
+            string s;
+            cin >> s;
+
+            if ((int)s.size() != n) {
+                cout << "No\n";
+                continue;
+            }
+
+            map<long long, char> mp1;
+            map<char, long long> mp2;
+            bool flag = true;
+
+            for (int i = 0; i < n; i++) {
+                long long num = v[i];
+                char c = s[i];
+
+                if (mp1.count(num)) {
+                    if (mp1[num] != c) {
+                        flag = false;
+                        break;
+                    }
+                }
+
+                if (mp2.count(c)) {
+                    if (mp2[c] != num) {
+                        flag = false;
+                        break;
+                    }
+                }
+                mp1[num] = c;
+                mp2[c] = num;
+            }
+
+            cout << (flag ? "Yes\n" : "No\n");
+        }
+    }
+    return 0;
+}
