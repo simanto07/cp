@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        string s;
+        cin >> s;
+        int n = (int) s.size();
+
+        vector < pair < char, int >> u, l;
+
+        for (int i = 0; i < n; i++) {
+            if (s[i] == 'B' && !u.empty()) {
+                u.erase(u.end() - 1);
+                continue;
+            }
+            if (s[i] == 'b' && !l.empty()) {
+                l.erase(l.end() - 1);
+                continue;
+            }
+            if (isupper(s[i])) {
+                u.push_back({
+                    s[i],
+                    i
+                });
+            }
+            else l.push_back({
+                s[i],
+                i
+            });
+        }
+        vector < pair < char, int >> ans;
+        for (int i = 0; i < (int) u.size(); i++) {
+            ans.push_back(u[i]);
+        }
+        for (int i = 0; i < (int) l.size(); i++) {
+            ans.push_back(l[i]);
+        }
+       
+       
+        sort(ans.begin(), ans.end(), [](const pair < char, int > & a,
+            const pair < char, int > & b) {
+            return a.second < b.second;
+        });
+
+        int i = 0;
+        while (i < ans.size()) {
+            if (ans[i].first == 'b')
+                ans.erase(ans.begin() + i);
+            else if (ans[i].first == 'B')
+                ans.erase(ans.begin() + i);
+            else
+                i++;
+        }
+
+
+        for (auto val: ans) cout << val.first;
+        cout << endl;
+    }
+
+}
