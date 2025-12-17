@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    int n, k;
+    cin >> n >> k;
+
+    vector < pair < int, int >> v(n);
+    vector < int > v2;
+
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+        v[i] = {
+            x,
+            i
+        };
+    }
+
+    sort(v.begin(), v.end());
+
+    long long sum = 0;
+    for (int i = 0; i < n; i++) {
+        if (sum + v[i].first <= k) {
+            sum += v[i].first;
+            v2.push_back(v[i].second);
+        }
+    }
+    if (v2.size() == 0) cout << 0 << endl;
+    else {
+        cout << v2.size() << endl;
+        for (int idx: v2) {
+            cout << idx + 1 << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
